@@ -20,6 +20,7 @@ public class NormalUserActivity extends AppCompatActivity {
     private ListView ListPendents;
     private static final int EDIT_NAME = 3;
     private static final int SEARCH = 2;
+    private static final int VIEW = 4;
     private ListcomAdapt adapter;
     private ListCRecollirAdapt adapterrec;
     private ArrayList<String> listcomandes;
@@ -48,6 +49,7 @@ public class NormalUserActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(NormalUserActivity.this,String.format(listcomandes.get(position)),Toast.LENGTH_SHORT).show();
+                viewComanda(String.format(listcomandes.get(position)));
             }
         });
         ListPendents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -103,5 +105,11 @@ public class NormalUserActivity extends AppCompatActivity {
     public void viewMaterial (View view){
         Intent intent = new Intent(this,ListMaterialActivity.class);
         startActivityForResult(intent,SEARCH);
+    }
+    public void viewComanda (String nomcomanda){
+        Intent intent = new Intent(this,InformationComandActivity.class);
+        intent.putExtra("name",nomcomanda);
+        startActivityForResult(intent, VIEW);
+
     }
 }
