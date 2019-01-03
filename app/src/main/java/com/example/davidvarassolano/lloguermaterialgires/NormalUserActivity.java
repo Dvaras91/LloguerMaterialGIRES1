@@ -16,9 +16,12 @@ import java.util.ArrayList;
 public class NormalUserActivity extends AppCompatActivity {
 
     private ListView ListEntregades;
+    private ListView ListPendents;
     private static final int EDIT_NAME = 3;
     private ListcomAdapt adapter;
+    private ListCRecollirAdapt adapterrec;
     private ArrayList<String> listcomandes;
+    private ArrayList <String> listcomrecollir;
 
 
 
@@ -27,12 +30,18 @@ public class NormalUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_normal_user);
         ListEntregades = (ListView)findViewById(R.id.list_entregades);
+        ListPendents = (ListView)findViewById(R.id.list_pendents);
         listcomandes = new ArrayList<>(  );
+        listcomrecollir = new ArrayList<>();
+        listcomrecollir.add("Savassona");
+        listcomrecollir.add("Benasque");
         listcomandes.add( "Cova Forat Mico" );
         listcomandes.add( "Aneto" );
         listcomandes.add( "Pica d' estats" );
         adapter = new ListcomAdapt(this,R.layout.layoutlistaentregades,listcomandes  );
+        adapterrec = new ListCRecollirAdapt(this,R.layout.layoutlistrecollir,listcomrecollir);
         ListEntregades.setAdapter(adapter);
+        ListPendents.setAdapter(adapterrec);
 
     }
 
