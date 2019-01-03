@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -43,6 +44,20 @@ public class NormalUserActivity extends AppCompatActivity {
         adapterrec = new ListCRecollirAdapt(this,R.layout.layoutlistrecollir,listcomrecollir);
         ListEntregades.setAdapter(adapter);
         ListPendents.setAdapter(adapterrec);
+        ListEntregades.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(NormalUserActivity.this,String.format(listcomandes.get(position)),Toast.LENGTH_SHORT).show();
+            }
+        });
+        ListPendents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(NormalUserActivity.this,String.format(listcomrecollir.get(position)),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
     }
 
