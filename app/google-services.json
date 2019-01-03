@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "813571594990",
+    "firebase_url": "https://gestiomaterialgires.firebaseio.com",
+    "project_id": "gestiomaterialgires",
+    "storage_bucket": "gestiomaterialgires.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813571594990:android:bc1b28bb2378a063",
+        "android_client_info": {
+          "package_name": "com.example.davidvarassolano.lloguermaterialgires"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "813571594990-gfjshliscmo050i4ki8hbhhu56lafplv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.davidvarassolano.lloguermaterialgires",
+            "certificate_hash": "da17032c3e46bf6509ad8003cb5a527cc18d5f87"
+          }
+        },
+        {
+          "client_id": "813571594990-09740l30b3mdphouej6p95kgkonbnvn6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-kNoz0GdGYSDaEbppIenhD_lW8tTfraU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "813571594990-09740l30b3mdphouej6p95kgkonbnvn6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813571594990:android:aa7fe2b69013e02c",
+        "android_client_info": {
+          "package_name": "e.alexsalasanleandro.gestiomaterialgires"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "813571594990-qjbm1eumeaf2tiplpaosc69623gcrfo4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "e.alexsalasanleandro.gestiomaterialgires",
+            "certificate_hash": "3fc177f65959e062a7fdceb7bbfce9f5ab1298c9"
+          }
+        },
+        {
+          "client_id": "813571594990-modrpri5fsu5jmadredmmij36fhrofq5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "e.alexsalasanleandro.gestiomaterialgires",
+            "certificate_hash": "3612d1c3440852d8da3f2d8d6b6d8c8051041d70"
+          }
+        },
+        {
+          "client_id": "813571594990-09740l30b3mdphouej6p95kgkonbnvn6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-kNoz0GdGYSDaEbppIenhD_lW8tTfraU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "813571594990-09740l30b3mdphouej6p95kgkonbnvn6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
