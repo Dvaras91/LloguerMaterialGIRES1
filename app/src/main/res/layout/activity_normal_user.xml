@@ -92,8 +92,9 @@
         android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp"
         android:drawableLeft="@android:drawable/ic_menu_search"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:onClick="viewMaterial"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:drawableStart="@android:drawable/ic_menu_search" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

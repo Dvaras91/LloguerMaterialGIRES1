@@ -18,6 +18,7 @@ public class NormalUserActivity extends AppCompatActivity {
     private ListView ListEntregades;
     private ListView ListPendents;
     private static final int EDIT_NAME = 3;
+    private static final int SEARCH = 2;
     private ListcomAdapt adapter;
     private ListCRecollirAdapt adapterrec;
     private ArrayList<String> listcomandes;
@@ -83,5 +84,9 @@ public class NormalUserActivity extends AppCompatActivity {
         intent.putExtra("name",nomcomanda);
 
         startActivityForResult(intent,EDIT_NAME);
+    }
+    public void viewMaterial (View view){
+        Intent intent = new Intent(this,ListMaterialActivity.class);
+        startActivityForResult(intent,SEARCH);
     }
 }
