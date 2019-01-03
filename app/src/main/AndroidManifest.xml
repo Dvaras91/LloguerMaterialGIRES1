@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".EditCommandActivity" />
-        <activity android:name=".ListMaterialActivity"></activity>
+        <activity android:name=".ListMaterialActivity" />
+        <activity android:name=".InformationComandActivity"></activity>
     </application>
 
 </manifest>

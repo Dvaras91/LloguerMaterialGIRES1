@@ -7,4 +7,5 @@
     <string name="Confirmar">Confirmar</string>
     <string name="precio_alquiler">Preu Lloguer</string>
     <string name="LlistaMaterial">Llistat de Material:</string>
+    <string name="Preu">Preu a pagar:</string>
 </resources>
