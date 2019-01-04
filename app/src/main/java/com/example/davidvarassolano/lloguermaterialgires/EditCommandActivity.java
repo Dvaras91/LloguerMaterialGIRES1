@@ -70,5 +70,6 @@ public class EditCommandActivity extends AppCompatActivity {
 
     public void ConfirmComanda(View view) {
         finish();
+        Toast.makeText(EditCommandActivity.this,"hola",Toast.LENGTH_SHORT).show();
     }
 }
