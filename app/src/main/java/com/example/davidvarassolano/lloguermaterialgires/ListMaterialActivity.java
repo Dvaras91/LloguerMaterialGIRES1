@@ -7,9 +7,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 
 public class ListMaterialActivity extends AppCompatActivity {
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private ArrayAdapter adapter;
     private ArrayList<String> list_item;
@@ -22,6 +26,7 @@ public class ListMaterialActivity extends AppCompatActivity {
 
         list_material = findViewById(R.id.list_material);
         Intent intent = getIntent();
+        //  db.collection("Catalogo").
         list_item = new ArrayList<>();
         list_item.add("Mosquetons");
         list_item.add("Dissipador");

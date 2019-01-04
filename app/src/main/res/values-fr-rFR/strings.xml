@@ -4,4 +4,9 @@
     <string name="entregades">Comandadas livrés</string>
     <string name="pendents">" Boucles d'oreilles comandas à collectionner"</string>
     <string name="Borrar">Effacer</string>
+    <string name="data">1</string>
+    <string name="Confirmar">1</string>
+    <string name="precio_alquiler">11</string>
+    <string name="LlistaMaterial">1</string>
+    <string name="Preu">1</string>
 </resources>
