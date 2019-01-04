@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -103,7 +104,7 @@ public class NormalUserActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(NormalUserActivity.this,String.format(listcomrecollir.get(position).name),Toast.LENGTH_SHORT).show();
-                novacomanda(String.format(listcomrecollir.get(position).name));
+                novacomanda(String.format(listcomrecollir.get(position).name),listcomrecollir.get(position).id);
             }
         });
 
@@ -128,7 +129,9 @@ public class NormalUserActivity extends AppCompatActivity {
                 else {
                     Toast.makeText(NormalUserActivity.this,"Creant comanda"+" "+nomcomanda,Toast.LENGTH_SHORT).show();
                     //Crear la nova activitat
-                    novacomanda(nomcomanda);
+                    //DocumentReference comRef = db.collection("Comandas").document(nomcomanda);
+                    // Pensar millor com ho faig
+                    novacomanda(nomcomanda,"hola"); //Millorar
 
                 }
 
@@ -144,8 +147,9 @@ public class NormalUserActivity extends AppCompatActivity {
 
 
     }
-    public void novacomanda (String nomcomanda){
+    public void novacomanda (String nomcomanda,String id){
         Intent intent = new Intent(this,EditCommandActivity.class);
+        intent.putExtra("id",id);
         intent.putExtra("name",nomcomanda);
 
         startActivityForResult(intent,EDIT_NAME);
