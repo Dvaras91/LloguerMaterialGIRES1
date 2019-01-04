@@ -2,6 +2,7 @@ package com.example.davidvarassolano.lloguermaterialgires;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -21,11 +24,15 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NormalUserActivity extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    private static final String NOMBRE = "nombre";
+    private static final String USUARI = "usuari";
     private ListView ListEntregades;
     private ListView ListPendents;
     private static final int EDIT_NAME = 3;
@@ -121,7 +128,7 @@ public class NormalUserActivity extends AppCompatActivity {
         novacomanda.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                String nomcomanda = Nomcomanda.getText().toString();
+                final String nomcomanda = Nomcomanda.getText().toString();
                 if (nomcomanda.isEmpty()){
                     Toast.makeText(NormalUserActivity.this,"Posa un nom vago",Toast.LENGTH_SHORT).show();
 
@@ -131,7 +138,22 @@ public class NormalUserActivity extends AppCompatActivity {
                     //Crear la nova activitat
                     //DocumentReference comRef = db.collection("Comandas").document(nomcomanda);
                     // Pensar millor com ho faig
-                    novacomanda(nomcomanda,"hola"); //Millorar
+                    Map<String,Object> com = new HashMap<>();
+                    com.put(NOMBRE,nomcomanda);
+                    com.put(USUARI,"paco");
+                    db.collection("Comandas").document().set(com).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            novacomanda(nomcomanda,"hola"); //Millorar
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(NormalUserActivity.this,"Error",Toast.LENGTH_SHORT).show();
+                            Log.e("LloguerMaterialGires","Error Firebase: "+e.toString());
+                        }
+                    });
+
 
                 }
 
