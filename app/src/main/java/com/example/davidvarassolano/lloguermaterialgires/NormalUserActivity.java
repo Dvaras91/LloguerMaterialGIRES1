@@ -96,7 +96,7 @@ public class NormalUserActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(NormalUserActivity.this,String.format(listcomandes.get(position).name),Toast.LENGTH_SHORT).show();
-                viewComanda(String.format(listcomandes.get(position).name));
+                viewComanda(String.format(listcomandes.get(position).name),listcomandes.get(position).id);
             }
         });
         ListPendents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -154,8 +154,9 @@ public class NormalUserActivity extends AppCompatActivity {
         Intent intent = new Intent(this,ListMaterialActivity.class);
         startActivityForResult(intent,SEARCH);
     }
-    public void viewComanda (String nomcomanda){
+    public void viewComanda (String nomcomanda, String id){
         Intent intent = new Intent(this,InformationComandActivity.class);
+        intent.putExtra ("id",id);
         intent.putExtra("name",nomcomanda);
         startActivityForResult(intent, VIEW);
 
