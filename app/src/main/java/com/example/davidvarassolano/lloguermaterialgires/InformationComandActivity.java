@@ -6,11 +6,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class InformationComandActivity extends AppCompatActivity {
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     Intent intent;
     TextView Nomcomanda;
     String nomcomanda;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
