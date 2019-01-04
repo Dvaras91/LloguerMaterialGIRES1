@@ -3,6 +3,7 @@ package com.example.davidvarassolano.lloguermaterialgires;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,4 +27,7 @@ public class EditCommandActivity extends AppCompatActivity {
 
     }
 
+    public void ConfirmComanda(View view) {
+        finish();
+    }
 }

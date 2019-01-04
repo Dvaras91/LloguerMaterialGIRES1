@@ -46,7 +46,10 @@ public class NormalUserActivity extends AppCompatActivity {
         ListPendents = (ListView)findViewById(R.id.list_pendents);
         listcomandes = new ArrayList<>(  );
         listcomrecollir = new ArrayList<>();
-        db.collection("Comandas").whereEqualTo("entrega",true).whereEqualTo("usuari","lolita04").addSnapshotListener(this, new EventListener<QuerySnapshot>() {
+
+        // en la pantalla d' usuari s' haura d' ingressar el nom identificador que serà el mateix que
+        // posarem en el segon whereEqualto
+        db.collection("Comandas").whereEqualTo("entrega",true).whereEqualTo("usuari","paco").addSnapshotListener(this, new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 if (e!=null){
@@ -60,8 +63,24 @@ public class NormalUserActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
-        listcomrecollir.add("Savassona");
-        listcomrecollir.add("Benasque");
+
+        // comandes per recollir de la base de dades
+        db.collection("Comandas").whereEqualTo("entrega",false).whereEqualTo("usuari","paco").addSnapshotListener(this, new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                if (e!=null){
+                    Log.e("LloguerMaterialGires","Firestore Error:"+e.toString());
+                    return;
+                }
+                listcomrecollir.clear();
+                for (DocumentSnapshot doc: documentSnapshots){
+                    listcomrecollir.add(doc.getString("name"));
+                }
+                adapterrec.notifyDataSetChanged();
+            }
+        });
+        //listcomrecollir.add("Savassona");
+        //listcomrecollir.add("Benasque");
         //listcomandes.add( "Cova Forat Mico" );
         //listcomandes.add( "Aneto" );
         //listcomandes.add( "Pica d' estats" );
@@ -137,4 +156,6 @@ public class NormalUserActivity extends AppCompatActivity {
         startActivityForResult(intent, VIEW);
 
     }
+
+
 }
