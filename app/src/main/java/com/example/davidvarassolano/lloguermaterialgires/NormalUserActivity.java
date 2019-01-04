@@ -32,8 +32,8 @@ public class NormalUserActivity extends AppCompatActivity {
     private static final int VIEW = 4;
     private ListcomAdapt adapter;
     private ListCRecollirAdapt adapterrec;
-    private ArrayList<String> listcomandes;
-    private ArrayList <String> listcomrecollir;
+    private ArrayList<Comanda> listcomandes;
+    private ArrayList <Comanda> listcomrecollir;
 
 
 
@@ -58,7 +58,9 @@ public class NormalUserActivity extends AppCompatActivity {
                 }
                 listcomandes.clear();
                 for (DocumentSnapshot doc: documentSnapshots){
-                    listcomandes.add(doc.getString("name"));
+                    Comanda comanda = new Comanda(doc.getString("name"),doc.getString("usuari"),doc.getString("data"));
+                    comanda.setId(doc.getId());
+                    listcomandes.add(comanda);
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -74,7 +76,9 @@ public class NormalUserActivity extends AppCompatActivity {
                 }
                 listcomrecollir.clear();
                 for (DocumentSnapshot doc: documentSnapshots){
-                    listcomrecollir.add(doc.getString("name"));
+                    Comanda comanda = new Comanda(doc.getString("name"),doc.getString("usuari"),doc.getString("data"));
+                    comanda.setId(doc.getId());
+                    listcomrecollir.add(comanda);
                 }
                 adapterrec.notifyDataSetChanged();
             }
@@ -91,15 +95,15 @@ public class NormalUserActivity extends AppCompatActivity {
         ListEntregades.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(NormalUserActivity.this,String.format(listcomandes.get(position)),Toast.LENGTH_SHORT).show();
-                viewComanda(String.format(listcomandes.get(position)));
+                Toast.makeText(NormalUserActivity.this,String.format(listcomandes.get(position).name),Toast.LENGTH_SHORT).show();
+                viewComanda(String.format(listcomandes.get(position).name));
             }
         });
         ListPendents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(NormalUserActivity.this,String.format(listcomrecollir.get(position)),Toast.LENGTH_SHORT).show();
-                novacomanda(String.format(listcomrecollir.get(position)));
+                Toast.makeText(NormalUserActivity.this,String.format(listcomrecollir.get(position).name),Toast.LENGTH_SHORT).show();
+                novacomanda(String.format(listcomrecollir.get(position).name));
             }
         });
 

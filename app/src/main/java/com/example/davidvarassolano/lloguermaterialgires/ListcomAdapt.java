@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ListcomAdapt extends ArrayAdapter {
+public class ListcomAdapt extends ArrayAdapter<Comanda> {
     public ListcomAdapt(@NonNull Context context, int resource, @NonNull List objects) {
         super( context, resource, objects );
     }
@@ -25,8 +25,9 @@ public class ListcomAdapt extends ArrayAdapter {
             result = inflater.inflate( R.layout.layoutlistaentregades,null );
         }
         TextView Nomcomanda = (TextView) result.findViewById( R.id.lbl_nom );
-        String nom = getItem( position ).toString();
-        Nomcomanda.setText( nom );
+        Comanda com = getItem(position);
+        Nomcomanda.setText(com.name);
+
         return result;
     }
 }

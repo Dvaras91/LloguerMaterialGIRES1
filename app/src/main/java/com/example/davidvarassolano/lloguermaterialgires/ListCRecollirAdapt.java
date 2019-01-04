@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ListCRecollirAdapt extends ArrayAdapter {
+public class ListCRecollirAdapt extends ArrayAdapter<Comanda> {
 
     public ListCRecollirAdapt(@NonNull Context context, int resource, @NonNull List objects) {
         super(context, resource, objects);
@@ -26,8 +26,10 @@ public class ListCRecollirAdapt extends ArrayAdapter {
             result = inflater.inflate(R.layout.layoutlistrecollir,null);
         }
         TextView Nomcomanda = (TextView) result.findViewById(R.id.lbl_nom);
-        String nom = getItem(position).toString();
-        Nomcomanda.setText(nom);
+        Comanda com = getItem(position);
+        Nomcomanda.setText(com.name);
+        //String nom = getItem(position).toString();
+        //Nomcomanda.setText(nom);
         return result;
     }
 }
