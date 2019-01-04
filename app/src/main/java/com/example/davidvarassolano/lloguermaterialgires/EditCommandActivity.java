@@ -50,15 +50,19 @@ public class EditCommandActivity extends AppCompatActivity {
                             Log.e("LloguerMaterialGires","Firestore Error "+e.toString());
                             return;
                         }
-
+                        listItems.clear();
+                        for (DocumentSnapshot doc: documentSnapshots){
+                            listItems.add(doc.getString("nombre"));
+                        }
+                        adapter.notifyDataSetChanged();
                     }
                 });
 
 
         listItems = new ArrayList<>();
-        listItems.add("Casc");
-        listItems.add("Neopreno");
-        listItems.add("Arnes");
+        //listItems.add("Casc");
+        //listItems.add("Neopreno");
+        //listItems.add("Arnes");
         adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listItems);
         listItem.setAdapter(adapter);
 
