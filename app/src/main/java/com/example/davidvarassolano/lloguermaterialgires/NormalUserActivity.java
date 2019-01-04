@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,9 +13,17 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class NormalUserActivity extends AppCompatActivity {
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private ListView ListEntregades;
     private ListView ListPendents;
@@ -28,6 +37,7 @@ public class NormalUserActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +46,25 @@ public class NormalUserActivity extends AppCompatActivity {
         ListPendents = (ListView)findViewById(R.id.list_pendents);
         listcomandes = new ArrayList<>(  );
         listcomrecollir = new ArrayList<>();
+        db.collection("Comandas").whereEqualTo("entrega",true).whereEqualTo("usuari","lolita04").addSnapshotListener(this, new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                if (e!=null){
+                    Log.e("LloguerMaterialGires","Firestore Error:"+e.toString());
+                    return;
+                }
+                listcomandes.clear();
+                for (DocumentSnapshot doc: documentSnapshots){
+                    listcomandes.add(doc.getString("name"));
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
         listcomrecollir.add("Savassona");
         listcomrecollir.add("Benasque");
-        listcomandes.add( "Cova Forat Mico" );
-        listcomandes.add( "Aneto" );
-        listcomandes.add( "Pica d' estats" );
+        //listcomandes.add( "Cova Forat Mico" );
+        //listcomandes.add( "Aneto" );
+        //listcomandes.add( "Pica d' estats" );
         adapter = new ListcomAdapt(this,R.layout.layoutlistaentregades,listcomandes  );
         adapterrec = new ListCRecollirAdapt(this,R.layout.layoutlistrecollir,listcomrecollir);
         ListEntregades.setAdapter(adapter);
@@ -56,6 +80,7 @@ public class NormalUserActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(NormalUserActivity.this,String.format(listcomrecollir.get(position)),Toast.LENGTH_SHORT).show();
+                novacomanda(String.format(listcomrecollir.get(position)));
             }
         });
 
